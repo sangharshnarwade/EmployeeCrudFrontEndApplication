@@ -1,0 +1,31 @@
+<div class="panel panel-primary" class="container" >
+    <div class="panel-heading">
+      <h3>Employee Salary Asending order</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Employee Id</th>
+            <th>Employee First Name</th>
+            <th>Employee Last Name</th>
+            <th>Employee Designation</th>
+            <th>Employee Salary</th>
+           
+          </tr>
+        </thead>
+        <tbody>   		<!-- in below line async pipe creates a subscription if the source is an Observable -->
+          <tr *ngFor="let employee of employees | async">  
+            <td>{{employee.employeeId}}</td>
+            <td>{{employee.employeeFirstName}}</td>
+            <td>{{employee.employeeLastName}}</td>
+            <td>{{employee.employeeDesignation}}</td>
+            <td>{{employee.employeeSalary}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+
+

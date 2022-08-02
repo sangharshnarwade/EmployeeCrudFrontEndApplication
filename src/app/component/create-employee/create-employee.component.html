@@ -1,0 +1,94 @@
+<h3 style="text-align: center;">Fill the Employee Information</h3><br>
+<div [hidden]="submitted">
+  <form #createForm="ngForm" (ngSubmit)="onSubmit(createForm)" class="container col-sm-6 col-lg-6 col-mg-6">
+    <div class="form-group">
+
+      <label for="employeeId">Employee Id</label>
+      <input type="text" class="form-control" id="employeeId" #employeeId="ngModel" required minlength="3"
+        [(ngModel)]="employee.employeeId" name="employeeId" placeholder="Enter Employee Id">
+      <div *ngIf="!employeeId?.valid && (employeeId?.dirty || employeeId?.touched)" class="required">
+        <div *ngIf="employeeId.errors?.['required']">
+          Employee Id is mandatory
+        </div>
+      </div>
+      <div *ngIf="employeeId.errors?.['minlength']" class="required">
+        Employee id minimum length should be {{employeeId.errors?.['minlength']?.requiredLength}}.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="employeeFirstName">Employee First Name </label>
+      <input type="text" class="form-control" id="employeeFirstName" #employeeFirstName="ngModel" required minlength="3"
+        [(ngModel)]="employee.employeeFirstName" name="employeeFirstName" pattern="^[a-zA-Z ]+$"
+        placeholder="Enter Employee First Name">
+      <div *ngIf="!employeeFirstName?.valid && (employeeFirstName?.dirty || employeeFirstName?.touched)"
+        class="required">
+        <div *ngIf="employeeFirstName.errors?.['required']">
+          Employee First Name is required
+        </div>
+      </div>
+      <div *ngIf="employeeFirstName.errors?.['minlength' ]" class="required">
+        Employee name minimum length should be {{employeeFirstName.errors?.['minlength']?.requiredLength}}.
+      </div>
+      <div *ngIf="employeeFirstName.errors?.['pattern' ]" class="required">
+        Employee FirstName must be charecter.
+      </div>
+    </div>
+    <div class="form-group">
+
+      <label for="employeeLastName">Employee Last Name </label>
+      <input type="text" class="form-control" id="employeeLastName" #employeeLastName="ngModel" required minlength="3"
+        [(ngModel)]="employee.employeeLastName" name="employeeLastName" pattern="^[a-zA-Z ]+$"
+        placeholder="Enter Employee Last Name">
+      <div *ngIf="!employeeLastName?.valid && (employeeLastName?.dirty || employeeLastName?.touched)" class="required">
+        <div *ngIf="employeeLastName.errors?.['required']">
+          Employee Last Name is required
+        </div>
+      </div>
+      <div *ngIf="employeeLastName.errors?.['minlength' ]" class="required">
+        Employee name minimum length should be {{employeeLastName.errors?.['minlength']?.requiredLength}}.
+      </div>
+      <div *ngIf="employeeLastName.errors?.['pattern' ]" class="required">
+        Employee Last Name must be charecter.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="designation">Employee Designation </label>
+      <input type="text" class="form-control" id="designation" #employeeDesignation="ngModel" required minlength="3"
+        [(ngModel)]="employee.employeeDesignation" name="employeeDesignation" pattern="^[a-zA-Z ]+$"
+        placeholder="Enter Employee Designation">
+      <div *ngIf="!employeeDesignation?.valid && (employeeDesignation?.dirty || employeeDesignation?.touched)"
+        class="required">
+        <div *ngIf="employeeDesignation.errors?.['required']">
+          Employee Designation is mandatory
+        </div>
+      </div>
+      <div *ngIf="employeeDesignation.errors?.['minlength' ]" class="required">
+        Employee designation length should be 1 {{employeeDesignation.errors?.['minlength']?.requiredLength}}.
+      </div>
+      <div *ngIf="employeeDesignation.errors?.['pattern' ]" class="required">
+        Employee designation must be charecter.
+      </div>
+    </div>
+    <div class="form-group">
+
+      <label for="salary">Employee Salary </label>
+      <input type="text" class="form-control" id="salary" #employeeSalary="ngModel" required minlength="3"
+        [(ngModel)]="employee.employeeSalary" name="employeeSalary" pattern="^[0-9]*$"
+        placeholder="Enter Employee Salary">
+      <div *ngIf="!employeeSalary?.valid && (employeeSalary?.dirty || employeeSalary?.touched)" class="required">
+        <div *ngIf="employeeSalary.errors?.['required']">
+          Employee Salary is mandatory
+        </div>
+      </div>
+      <div *ngIf="employeeSalary.errors?.['minlength' ]" class="required">
+        Employee salary length should be {{employeeSalary.errors?.['minlength']?.requiredLength}}.
+      </div>
+      <div *ngIf="employeeDesignation.errors?.['pattern' ]" class="required">
+        Employee Salary must be numric
+      </div>
+    </div>
+    <p>
+      <button class="btn btn-success" type="Submit" [disabled]="!createForm.valid">Submit</button>
+    </p>
+  </form>
+</div>
